@@ -1,21 +1,14 @@
-
-
-function maincalculation(a, b, c) {
-    const d = 0.06 
-
+function maincalculation(a, b, c, d) { 
+    let c = c - 60;
+    let d = 60 - d; 
+    let p = Math.ceil((a*12*1.04*(Math.pow((1+b), c)-1))/(b*Math.pow((1+b), c)));
+    return Math.ceil(p/((1-Math.pow((1+(b)), (d+1)))/(-b)));
 }
 
-function calculate() {
-    let x = document.forms["moneyneeded"].value;
-    let y = document.forms["long"].value;
-    let z = document.forms["when"].value;
-    if (x == "" || y == "" || z == "") {
-        alert("Hãy điền vào tất cả các ô!");
-        return false;
-    }
-    if (!Number.isInteger(x) || !Number.isInteger(y) || !Number.isInteger(z)) {
-        alert("Hãy điền số nguyên!");
-        return false;
-    }
-    maincalculation(x, y ,z)
+function getprice() {
+
+} 
+
+function checkvalid() { 
+    maincalculation(g, h, i, k)
 }
