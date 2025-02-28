@@ -24,13 +24,37 @@
         <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
     </head>
 <body>
-    <form onsubmit="return calculate()" method="post">
-        <lable for="fname">Bắt đầu tiết kiệm từ năm nào (tuổi):</lable>
-        <input type="text" id="when" name="when">
+    <form onsubmit="calculate()" method="post" onkeydown="if(event.keyCode === 13) {return false;}" id="form">
+        <lable for="fname">Bắt đầu tiết kiệm từ năm (tuổi):</lable>
+        <input type="text" id="when" name="when" placeholder="25" required><br>
         <label>
-        
-            <input type="checkbox" id="sports" name="interest" value="sports" />
-        </label>
+            <input type="checkbox" id="basic" name="livingneeds" value="basic" />
+        </label><br>
+        <label>
+            <input type="checkbox" id="better" name="livingneeds" value="better" />
+        </label><br>
+        <label>
+            <input type="checkbox" id="essentials" name="items" value="essentials" checked required/>
+        </label><br>
+        <label>
+            <input type="checkbox" id="utilities" name="items" value="utilities" />
+        </label><br>
+        <label>
+            <input type="checkbox" id="traffic" name="items" value="traffic" />
+        </label><br>
+        <label>
+            <input type="checkbox" id="internet" name="items" value="internet" />
+        </label><br>
+        <label>
+            <input type="checkbox" id="families" name="items" value="families" />
+        </label><br>
+        <label>
+            <input type="checkbox" id="fun" name="items" value="fun" />
+        </label><br>
+        <label>
+            <input type="checkbox" id="preventive" name="items" value="preventive" />
+        </label><br>
+        <input type="submit">
     </form>
 </body>
 </html>
