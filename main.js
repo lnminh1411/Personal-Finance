@@ -1,73 +1,60 @@
-function maincalculation(a, b, c, d) { 
-    let tc = c - 60;
-    let td = 60 - d; 
-    let p = Math.ceil((a*12*1.04*(Math.pow((1+b), tc)-1))/(b*Math.pow((1+b), tc)));
-    return [Math.ceil(p/((1-Math.pow((1+(b)), (td+1)))/(-b))), p];
+function maincalculation(e, t, i, c) {
+  let n = i - 60,
+    a = 60 - c,
+    s = Math.ceil(
+      (12 * e * 1.04 * (Math.pow(1 + t, n) - 1)) / (t * Math.pow(1 + t, n))
+    );
+  return [Math.ceil(s / ((1 - Math.pow(1 + t, a + 1)) / -t)), s];
 }
 
-function calculate() { 
-    var a = 4000000;
-    const c = $("#age2").val();
-    const d = $("#age").val();
-    const b = 0.06
-    if ($('#basic').is(':checked')) {
-        if ($('#utilities').is(':checked')) {
-            a = a + 1000000
-        }
-        if ($('#traffic').is(':checked')) {
-            a = a + 207081
-        }
-        if ($('#internet').is(':checked')) {
-            a = a + 135000
-        }
-        if ($('#families').is(':checked')) {
-            a = a + 200000
-        }
-        if ($('#fun').is(':checked')) {
-            a = a + 384200
-        }
-        if ($('#preventive').is(':checked')) {
-            a = a + 1000000
-        }}
-    if ($('#better').is(':checked')) {
-        if ($('#utilities').is(':checked')) {
-            a = a + 1500000
-        }
-        if ($('#traffic').is(':checked')) {
-            a = a + 207081
-        }
-        if ($('#internet').is(':checked')) {
-            a = a + 150000
-        }
-        if ($('#families').is(':checked')) {
-            a = a + 200000
-        }
-        if ($('#fun').is(':checked')) {
-            a = a + 1500000
-        }
-        if ($('#preventive').is(':checked')) {
-            a = a + 3921633
-    }}
-    const values = maincalculation(a, b, c, d)
-    alert("Tiền cần có vào năm 60 tuổi: " + new Intl.NumberFormat().format(values[1]) + " VNĐ \nTiền cần gửi vào ngân hàng ban đầu (Lãi suất " + b + "%/năm): " + new Intl.NumberFormat().format(values[0]) + " VNĐ \nTiền cần gửi vào ngân hàng các tháng tiếp theo trong kì hạn: " + new Intl.NumberFormat().format(Math.ceil(values[0]/12)) + " VNĐ")
+function calculate() {
+  var e = 4e6;
+  const t = $("#age2").val(),
+    i = $("#age").val(),
+    c = 0.06;
+  $("#basic").is(":checked") &&
+    ($("#utilities").is(":checked") && (e += 1e6),
+    $("#traffic").is(":checked") && (e += 207081),
+    $("#internet").is(":checked") && (e += 135e3),
+    $("#families").is(":checked") && (e += 2e5),
+    $("#fun").is(":checked") && (e += 384200),
+    $("#preventive").is(":checked") && (e += 1e6)),
+    $("#better").is(":checked") &&
+      ($("#utilities").is(":checked") && (e += 15e5),
+      $("#traffic").is(":checked") && (e += 207081),
+      $("#internet").is(":checked") && (e += 15e4),
+      $("#families").is(":checked") && (e += 2e5),
+      $("#fun").is(":checked") && (e += 15e5),
+      $("#preventive").is(":checked") && (e += 3921633));
+  const n = maincalculation(e, c, t, i);
+  alert(
+    "Tiền cần có vào năm 60 tuổi: " +
+      new Intl.NumberFormat().format(n[1]) +
+      " VNĐ \nTiền cần gửi vào ngân hàng ban đầu (Lãi suất " +
+      c +
+      "%/năm): " +
+      new Intl.NumberFormat().format(n[0]) +
+      " VNĐ \nTiền cần gửi vào ngân hàng các tháng tiếp theo trong kì hạn: " +
+      new Intl.NumberFormat().format(Math.ceil(n[0] / 12)) +
+      " VNĐ"
+  );
 }
+
 function changecost() {
-    if ($('#basic').is(':checked')) {
-        $(".essentials").text("(4,000,000 VNĐ)")
-        $(".utilities").text("(1,000,000 VNĐ)")
-        $(".traffic").text("(207,081 VNĐ)")
-        $(".internet").text("(135,000 VNĐ)")
-        $(".families").text("(200,000 VNĐ)")
-        $(".fun").text("(384,200 VNĐ)")
-        $(".preventive").text("(1,000,000 VNĐ)")
-    }
-    if ($('#better').is(':checked')) {
-        $(".essentials").text("(4,000,000 VNĐ)")
-        $(".utilities").text("(1,500,000 VNĐ)")
-        $(".traffic").text("(207,081 VNĐ)")
-        $(".internet").text("(150,000 VNĐ)")
-        $(".families").text("(200,000 VNĐ)")
-        $(".fun").text("(1,500,000 VNĐ)")
-        $(".preventive").text("(3,921,633 VNĐ)")
-    }
+  $("#basic").is(":checked") &&
+    ($(".essentials").text("(4,000,000 VNĐ)"),
+    $(".utilities").text("(1,000,000 VNĐ)"),
+    $(".traffic").text("(207,081 VNĐ)"),
+    $(".internet").text("(135,000 VNĐ)"),
+    $(".families").text("(200,000 VNĐ)"),
+    $(".fun").text("(384,200 VNĐ)"),
+    $(".preventive").text("(1,000,000 VNĐ)")),
+    $("#better").is(":checked") &&
+      ($(".essentials").text("(4,000,000 VNĐ)"),
+      $(".utilities").text("(1,500,000 VNĐ)"),
+      $(".traffic").text("(207,081 VNĐ)"),
+      $(".internet").text("(150,000 VNĐ)"),
+      $(".families").text("(200,000 VNĐ)"),
+      $(".fun").text("(1,500,000 VNĐ)"),
+      $(".preventive").text("(3,921,633 VNĐ)"));
 }
