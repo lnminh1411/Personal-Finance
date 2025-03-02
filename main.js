@@ -11,6 +11,7 @@ function calculate() {
   const i = $("#age2").val(),
     n = $("#age").val(),
     t = $("#interest").val() / 100;
+    if (!i || !n || !t) alert("Vui lòng nhập một số hợp lệ!");
   if (i > 130 || i < 61 || n > 35 || n < 16) return;
   if ($("#self").is(":checked")) {
     if (((e = $(".self").val()), e < 5001))
