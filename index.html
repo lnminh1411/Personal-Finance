@@ -15,18 +15,20 @@
         <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
     </head>
 <body>
-    <form onsubmit="calculate()" onkeydown="if(event.keyCode === 13) {return false;}" id="form">
-        <lable for="fname">Bắt đầu tiết kiệm từ năm (tuổi):</lable>
-        <input type="text" id="when" name="when" placeholder="25" required><br>
+    <form onkeydown="if(event.keyCode === 13) {return false;}" id="form">
+        <lable>Bắt đầu tiết kiệm từ năm (tuổi):</lable>
+        <input id="age" type="number" value="25" min="16" max="35" step="1" /><br><br>
+        <lable>Dự định sẽ sống đến năm:</lable>
+        <input id="age2" type="number" value="90" min="61" max="130" step="1" /><br><br>
         <fieldset>
             <legend>Nhu cầu sống?</legend>
         <label>
             Tối thiểu
-            <input type="checkbox" id="basic" name="livingneeds" value="basic" />
+            <input type="radio" id="basic" name="livingneeds" value="basic" required onclick="changecost()"/>
         </label><br>
         <label>
             Điều kiện tốt hơn
-            <input type="checkbox" id="better" name="livingneeds" value="better" />
+            <input type="radio" id="better" name="livingneeds" value="better" onclick="changecost()"/>
         </label>
         </fieldset><br>
         <fieldset>
@@ -34,33 +36,40 @@
         <label>
             Thực phẩm và nhu yếu phẩm
             <input type="checkbox" id="essentials" name="items" value="essentials" checked onclick="return false;" required/>
+            <label class="essentials"></label>
         </label><br>
         <label>
             Tiện ích 
             <input type="checkbox" id="utilities" name="items" value="utilities" />
+            <label class="utilities"></label>
         </label><br>
         <label>
             Giao thông
             <input type="checkbox" id="traffic" name="items" value="traffic" />
+            <label class="traffic"></label>
         </label><br>
         <label>
             Điện thoại và Internet
             <input type="checkbox" id="internet" name="items" value="internet" />
+            <label class="internet"></label>
         </label><br>
         <label>
             Vật dụng gia đình
             <input type="checkbox" id="families" name="items" value="families" />
+            <label class="families"></label>
         </label><br>
         <label>
             Vui chơi giải trí
             <input type="checkbox" id="fun" name="items" value="fun" />
+            <label class="fun"></label>
         </label><br>
         <label>
             Các khoản dự phòng
             <input type="checkbox" id="preventive" name="items" value="preventive" />
+            <label class="preventive"></label>
         </label>
     </fieldset>
-        <button type="submit" id="submitbutton">Hoàn Thành
+    <button type="submit" id="submitbutton" onclick="calculate()">Hoàn Thành
     </form>
 </body>
 <script src=main.js></script>
