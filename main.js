@@ -1,60 +1,73 @@
-function maincalculation(e, t, i, c) {
-  let n = i - 60,
-    a = 60 - c,
-    s = Math.ceil(
-      (12 * e * 1.04 * (Math.pow(1 + t, n) - 1)) / (t * Math.pow(1 + t, n))
+function maincalculation(e, i, n, t) {
+  let s = n - 60,
+    d = 60 - t,
+    a = Math.ceil(
+      (12 * e * 1.04 * (Math.pow(1 + i, s) - 1)) / (i * Math.pow(1 + i, s))
     );
-  return [Math.ceil(s / ((1 - Math.pow(1 + t, a + 1)) / -t)), s];
+  return [Math.ceil(a / ((1 - Math.pow(1 + i, d + 1)) / -i)), a];
 }
-
 function calculate() {
   var e = 4e6;
-  const t = $("#age2").val(),
-    i = $("#age").val(),
-    c = 0.06;
-  $("#basic").is(":checked") &&
-    ($("#utilities").is(":checked") && (e += 1e6),
-    $("#traffic").is(":checked") && (e += 207081),
-    $("#internet").is(":checked") && (e += 135e3),
-    $("#families").is(":checked") && (e += 2e5),
-    $("#fun").is(":checked") && (e += 384200),
-    $("#preventive").is(":checked") && (e += 1e6)),
-    $("#better").is(":checked") &&
-      ($("#utilities").is(":checked") && (e += 15e5),
+  const i = $("#age2").val(),
+    n = $("#age").val(),
+    t = $("#interest").val() / 100;
+  if (i > 130 || i < 61 || n > 35 || n < 16) return;
+  if ($("#self").is(":checked")) {
+    if (((e = $(".self").val()), e < 5001))
+      return void alert(
+        "Bruh, pls dont mess with me! \nHãy nhập số tiền lớn hơn 5,000 VNĐ"
+      );
+  } else
+    $("#utilities1").is(":checked") && (e += 1e6),
+      $("#other").val() && (e += parseInt($("#other").val())),
       $("#traffic").is(":checked") && (e += 207081),
-      $("#internet").is(":checked") && (e += 15e4),
+      $("#internet1").is(":checked") && (e += 135e3),
       $("#families").is(":checked") && (e += 2e5),
-      $("#fun").is(":checked") && (e += 15e5),
-      $("#preventive").is(":checked") && (e += 3921633));
-  const n = maincalculation(e, c, t, i);
+      $("#fun1").is(":checked") && (e += 384200),
+      $("#preventive1").is(":checked") && (e += 1e6),
+      $("#utilities2").is(":checked") && (e += 15e5),
+      $("#internet2").is(":checked") && (e += 15e4),
+      $("#fun2").is(":checked") && (e += 15e5),
+      $("#preventive2").is(":checked") && (e += 3921633);
+  const s = maincalculation(e, t, i, n);
   alert(
-    "Tiền cần có vào năm 60 tuổi: " +
-      new Intl.NumberFormat().format(n[1]) +
+    "Tiền cần có trong ngân hàng vào năm 60 tuổi: " +
+      new Intl.NumberFormat().format(s[1]) +
       " VNĐ \nTiền cần gửi vào ngân hàng ban đầu (Lãi suất " +
-      c*100 +
+      100 * t +
       "%/năm): " +
-      new Intl.NumberFormat().format(n[0]) +
+      new Intl.NumberFormat().format(s[0]) +
       " VNĐ \nTiền cần gửi vào ngân hàng các tháng tiếp theo trong kì hạn: " +
-      new Intl.NumberFormat().format(Math.ceil(n[0] / 12)) +
+      new Intl.NumberFormat().format(Math.ceil(s[0] / 12)) +
       " VNĐ"
   );
 }
-
-function changecost() {
-  $("#basic").is(":checked") &&
-    ($(".essentials").text("(4,000,000 VNĐ)"),
-    $(".utilities").text("(1,000,000 VNĐ)"),
-    $(".traffic").text("(207,081 VNĐ)"),
-    $(".internet").text("(135,000 VNĐ)"),
-    $(".families").text("(200,000 VNĐ)"),
-    $(".fun").text("(384,200 VNĐ)"),
-    $(".preventive").text("(1,000,000 VNĐ)")),
-    $("#better").is(":checked") &&
-      ($(".essentials").text("(4,000,000 VNĐ)"),
-      $(".utilities").text("(1,500,000 VNĐ)"),
-      $(".traffic").text("(207,081 VNĐ)"),
-      $(".internet").text("(150,000 VNĐ)"),
-      $(".families").text("(200,000 VNĐ)"),
-      $(".fun").text("(1,500,000 VNĐ)"),
-      $(".preventive").text("(3,921,633 VNĐ)"));
+function hide() {
+  $("#self").is(":checked")
+    ? ($("#hiddenst").css({ display: "block" }),
+      $("#other").prop("disabled", !0),
+      $("#essentials").prop("disabled", !0),
+      $("#traffic").prop("disabled", !0),
+      $("#internet1").prop("disabled", !0),
+      $("#internet2").prop("disabled", !0),
+      $("#families").prop("disabled", !0),
+      $("#fun1").prop("disabled", !0),
+      $("#fun2").prop("disabled", !0),
+      $("#preventive1").prop("disabled", !0),
+      $("#preventive2").prop("disabled", !0),
+      $("#utilities1").prop("disabled", !0),
+      $("#utilities2").prop("disabled", !0))
+    : ($("#hiddenst").css({ display: "none" }),
+      $("#other").prop("disabled", !1),
+      $("#traffic").prop("disabled", !1),
+      $("#internet1").prop("disabled", !1),
+      $("#internet2").prop("disabled", !1),
+      $("#families").prop("disabled", !1),
+      $("#fun1").prop("disabled", !1),
+      $("#fun2").prop("disabled", !1),
+      $("#preventive1").prop("disabled", !1),
+      $("#preventive2").prop("disabled", !1),
+      $("#essentials").prop("disabled", !1),
+      $("#utilities1").prop("disabled", !1),
+      $("#utilities2").prop("disabled", !1));
 }
