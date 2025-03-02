@@ -19,10 +19,10 @@
 
 <body>
     <form onkeydown="if(event.keyCode === 13) {return false;}" id="form" onsubmit="calculate()">
-        <lable>Bắt đầu tiết kiệm từ năm (tuổi): </lable><input id="age" type="number" placeholder="25" min="16" max="35"
+        <lable>Bắt đầu tiết kiệm từ năm (tuổi): </lable><input id="age" type="number" placeholder="25" min="10" max="35"
             step="1" onkeydown="this.value=this.value.replace(/[^\d]/,'')"
             onkeyup="this.value=this.value.replace(/[^\d]/,'')" /><br /><br />
-        <lable>Lãi suất hàng năm: </lable><input id="interest" type="number" placeholder="6" min="0.01" max="20"
+        <lable>Lãi suất hàng năm: </lable><input id="interest" type="number" placeholder="6" min="0.01" max="100"
             step="0.01" />%<br /><br />
         <lable>Dự định sẽ sống đến năm: </lable><input id="age2" type="number" placeholder="90" min="61" max="130" step="1"
             onkeydown="this.value=this.value.replace(/[^\d]/,'')"
@@ -86,6 +86,7 @@
         </fieldset>
         <br /><button type="submit" id="submitbutton">Hoàn Thành</button>
     </form>
+    <div style="position: absolute; bottom:10px; left:10px;"><a href="https://github.com/lnminh1411" style="color: black; font-size:17px">Click here to get the souce code!</a></div>
 </body>
 <script src="main.js"></script>
 
