@@ -31,7 +31,7 @@ function calculate() {
     "Tiền cần có vào năm 60 tuổi: " +
       new Intl.NumberFormat().format(n[1]) +
       " VNĐ \nTiền cần gửi vào ngân hàng ban đầu (Lãi suất " +
-      c +
+      c*100 +
       "%/năm): " +
       new Intl.NumberFormat().format(n[0]) +
       " VNĐ \nTiền cần gửi vào ngân hàng các tháng tiếp theo trong kì hạn: " +
