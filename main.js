@@ -35,7 +35,7 @@ function calculate() {
       $("#preventive2").is(":checked") && (e += 3921633);
   const s = maincalculation(e, t, i, n, z, k);
   alert(
-    "Tiền cần có trong ngân hàng vào năm 60 tuổi: " +
+    `Tiền cần có trong ngân hàng vào năm ${z} tuổi: ` +
       new Intl.NumberFormat().format(s[1]) +
       " VNĐ \nTiền cần gửi vào ngân hàng mỗi năm (Lãi suất " +
       100 * t +
