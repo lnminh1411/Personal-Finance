@@ -1,16 +1,19 @@
-function maincalculation(e, i, n, t, z) {
+//tiền có, lãi, sống đên năm, tiết kiệm từ, nghỉ hưu vào, lạm phát
+function maincalculation(e, i, n, t, z, k) { 
   let s = n - z,
     d = z - t,
+    q = (1 + k)/(1 + i),
     a = Math.ceil(
-      (12 * e * 1.04 * (Math.pow(1 + i, s) - 1)) / (i * Math.pow(1 + i, s))
+      e*12*Math.pow(1 + k, d))*((1-Math.pow(q, s))/(1-q)
     );
-  return [Math.ceil((a * Math.pow((1 + i), d)) / ((1 - Math.pow(1 + i, d + 1)) / -i)), (a * Math.pow((1 + i), d))];
+  return [Math.ceil(a/((1-Math.pow(1+i, d))/-i)), a];
 }
 function calculate() {
   var e = 4e6;
   const i = $("#age2").val(),
     n = $("#age").val(),
     z = $("#age3").val(),
+    k = $("#inflate").val() / 100,
     t = $("#interest").val() / 100;
     if (!i || !n || !t) {alert("Vui lòng nhập một số hợp lệ!"); return;}
   if ($("#self").is(":checked")) {
@@ -30,16 +33,14 @@ function calculate() {
       $("#internet2").is(":checked") && (e += 15e4),
       $("#fun2").is(":checked") && (e += 15e5),
       $("#preventive2").is(":checked") && (e += 3921633);
-  const s = maincalculation(e, t, i, n, z);
+  const s = maincalculation(e, t, i, n, z, k);
   alert(
     "Tiền cần có trong ngân hàng vào năm 60 tuổi: " +
       new Intl.NumberFormat().format(s[1]) +
-      " VNĐ \nTiền cần gửi vào ngân hàng ban đầu (Lãi suất " +
+      " VNĐ \nTiền cần gửi vào ngân hàng mỗi năm (Lãi suất " +
       100 * t +
       "%/năm): " +
       new Intl.NumberFormat().format(s[0]) +
-      " VNĐ \nTiền cần gửi vào ngân hàng các tháng tiếp theo trong kì hạn: " +
-      new Intl.NumberFormat().format(Math.ceil(s[0] / 12)) +
       " VNĐ"
   );
 }
