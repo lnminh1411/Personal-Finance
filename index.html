@@ -19,14 +19,17 @@
 
 <body>
     <form onkeydown="if(event.keyCode === 13) {return false;}" id="form" onsubmit="calculate()">
-        <lable>Bắt đầu tiết kiệm từ năm (tuổi): </lable><input id="age" type="number" placeholder="25" min="15" max="35"
+        <lable>Bắt đầu tiết kiệm từ năm: </lable><input id="age" type="number" placeholder="25" min="15" max="35"
             step="1" onkeydown="this.value=this.value.replace(/[^\d]/,'')"
-            onkeyup="this.value=this.value.replace(/[^\d]/,'')" /><br /><br />
+            onkeyup="this.value=this.value.replace(/[^\d]/,'')" /> tuổi<br /><br />
         <lable>Lãi suất hàng năm: </lable><input id="interest" type="number" placeholder="6" min="0.01" max="20"
-            step="0.01" />%<br /><br />
+            step="0.01" /> %<br /><br />
+            <lable>Dự định sẽ nghỉ hưu vào năm: </lable><input id="age3" type="number" placeholder="60" min="40" max="70" step="1"
+            onkeydown="this.value=this.value.replace(/[^\d]/,'')"
+            onkeyup="this.value=this.value.replace(/[^\d]/,'')" /> tuổi<br /><br />
         <lable>Dự định sẽ sống đến năm: </lable><input id="age2" type="number" placeholder="90" min="61" max="130" step="1"
             onkeydown="this.value=this.value.replace(/[^\d]/,'')"
-            onkeyup="this.value=this.value.replace(/[^\d]/,'')" /><br /><br /><br />
+            onkeyup="this.value=this.value.replace(/[^\d]/,'')" /> tuổi<br /><br /><br />
         <fieldset>
             <legend>Các khoản chi tiêu</legend>
             <label>Thực phẩm và nhu yếu phẩm

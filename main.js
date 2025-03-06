@@ -1,15 +1,16 @@
-function maincalculation(e, i, n, t) {
-  let s = n - 60,
-    d = 60 - t,
+function maincalculation(e, i, n, t, z) {
+  let s = n - z,
+    d = z - t,
     a = Math.ceil(
       (12 * e * 1.04 * (Math.pow(1 + i, s) - 1)) / (i * Math.pow(1 + i, s))
     );
-  return [Math.ceil(a / ((1 - Math.pow(1 + i, d + 1)) / -i)), a];
+  return [Math.ceil((a * Math.pow((1 + i), d)) / ((1 - Math.pow(1 + i, d + 1)) / -i)), (a * Math.pow((1 + i), d))];
 }
 function calculate() {
   var e = 4e6;
   const i = $("#age2").val(),
     n = $("#age").val(),
+    z = $("#age3").val(),
     t = $("#interest").val() / 100;
     if (!i || !n || !t) {alert("Vui lòng nhập một số hợp lệ!"); return;}
   if ($("#self").is(":checked")) {
@@ -29,7 +30,7 @@ function calculate() {
       $("#internet2").is(":checked") && (e += 15e4),
       $("#fun2").is(":checked") && (e += 15e5),
       $("#preventive2").is(":checked") && (e += 3921633);
-  const s = maincalculation(e, t, i, n);
+  const s = maincalculation(e, t, i, n, z);
   alert(
     "Tiền cần có trong ngân hàng vào năm 60 tuổi: " +
       new Intl.NumberFormat().format(s[1]) +
