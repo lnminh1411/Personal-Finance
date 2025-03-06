@@ -1,21 +1,19 @@
-//tiền có, lãi, sống đên năm, tiết kiệm từ, nghỉ hưu vào, lạm phát
-function maincalculation(e, i, n, t, z, k) { 
-  let s = n - z,
-    d = z - t,
-    q = (1 + k)/(1 + i),
-    a = Math.ceil(
-      e*12*Math.pow(1 + k, d))*((1-Math.pow(q, s))/(1-q)
-    );
-  return [Math.ceil(a/((1-Math.pow(1+i, d))/-i)), a];
+function maincalculation(e, i, t, n, s, d) {
+  let l = t - s,
+    a = s - n,
+    p = (1 + d) / (1 + i),
+    r =
+      Math.ceil(12 * e * Math.pow(1 + d, a)) * ((1 - Math.pow(p, l)) / (1 - p));
+  return [Math.ceil(r / ((1 - Math.pow(1 + i, a)) / -i)), r];
 }
 function calculate() {
   var e = 4e6;
   const i = $("#age2").val(),
-    n = $("#age").val(),
-    z = $("#age3").val(),
-    k = $("#inflate").val() / 100,
-    t = $("#interest").val() / 100;
-    if (!i || !n || !t) {alert("Vui lòng nhập một số hợp lệ!"); return;}
+    t = $("#age").val(),
+    n = $("#age3").val(),
+    s = $("#inflate").val() / 100,
+    d = $("#interest").val() / 100;
+  if (!i || !t || !d) return void alert("Vui lòng nhập một số hợp lệ!");
   if ($("#self").is(":checked")) {
     if (((e = $(".self").val()), e < 5001))
       return void alert(
@@ -33,14 +31,14 @@ function calculate() {
       $("#internet2").is(":checked") && (e += 15e4),
       $("#fun2").is(":checked") && (e += 15e5),
       $("#preventive2").is(":checked") && (e += 3921633);
-  const s = maincalculation(e, t, i, n, z, k);
+  const l = maincalculation(e, d, i, t, n, s);
   alert(
-    `Tiền cần có trong ngân hàng vào năm ${z} tuổi: ` +
-      new Intl.NumberFormat().format(s[1]) +
+    `Tiền cần có trong ngân hàng vào năm ${n} tuổi: ` +
+      new Intl.NumberFormat().format(l[1]) +
       " VNĐ \nTiền cần gửi vào ngân hàng mỗi năm (Lãi suất " +
-      100 * t +
+      100 * d +
       "%/năm): " +
-      new Intl.NumberFormat().format(s[0]) +
+      new Intl.NumberFormat().format(l[0]) +
       " VNĐ"
   );
 }
