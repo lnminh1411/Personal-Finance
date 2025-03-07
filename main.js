@@ -72,9 +72,9 @@ function hide() {
       $("#utilities1").prop("disabled", !1),
       $("#utilities2").prop("disabled", !1));
 }
-const radioButtons = $('input[type="radio"]');
-radioButtons &&
-  radioButtons.each(function () {
+const x = $('input[type="radio"]');
+x &&
+  x.each(function () {
     let e = $(this).attr("name");
     $(this).on("click", function () {
       let i = $(this).attr("is_checked");
@@ -82,7 +82,7 @@ radioButtons &&
         $(this).prop("checked", !1), $(this).attr("is_checked", "false");
       else {
         $(this).attr("is_checked", "true");
-        const i = Array.from(radioButtons),
+        const i = Array.from(x),
           t = i.filter(function (i) {
             if (!i.checked) return $(i).attr("name") === e;
           });
