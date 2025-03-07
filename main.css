@@ -38,23 +38,18 @@ label {
   margin-bottom: 10px;
   color: #666;
 }
+#other {
+  width: 70%;
+}
 .self,
 input[type="number"] {
   width: -webkit-calc(100% - 20px);
   width: -moz-calc(100% - 20px);
   width: calc(100% - 20px);
-  height: 35px;
-  margin-bottom: 20px;
-  padding: 10px;
-  border: 1px solid #ccc;
-  -webkit-border-radius: 5px;
-  -moz-border-radius: 5px;
-  border-radius: 5px;
-  background-color: #f9f9f9;
-  color: #333;
 }
-input[type="text"] {
-  width: 50%;
+.self,
+input[type="text"],
+input[type="number"] {
   height: 35px;
   margin-bottom: 20px;
   padding: 10px;
