@@ -1,19 +1,20 @@
-function maincalculation(e, i, t, n, s, d) {
-  let l = t - s,
-    a = s - n,
-    p = (1 + d) / (1 + i),
-    r =
-      Math.ceil(12 * e * Math.pow(1 + d, a)) * ((1 - Math.pow(p, l)) / (1 - p));
-  return [Math.ceil(r / ((1 - Math.pow(1 + i, a)) / -i)), r];
+function maincalculation(e, i, t, s, n, a) {
+  let r = t - n,
+    d = n - s,
+    l = (1 + a) / (1 + i),
+    c =
+      Math.ceil(12 * e * Math.pow(1 + a, d)) * ((1 - Math.pow(l, r)) / (1 - l));
+  return [Math.ceil(c / ((1 - Math.pow(1 + i, d)) / -i)), c];
 }
 function calculate() {
   var e = 4e6;
   const i = $("#age2").val(),
     t = $("#age").val(),
-    n = $("#age3").val(),
-    s = $("#inflate").val() / 100,
-    d = $("#interest").val() / 100;
-  if (!i || !t || !d || !s || !n) return void alert("Vui lòng nhập một số hợp lệ!");
+    s = $("#age3").val(),
+    n = $("#inflate").val() / 100,
+    a = $("#interest").val() / 100;
+  if (!(i && t && a && n && s))
+    return void alert("Vui lòng nhập một số hợp lệ!");
   if ($("#self").is(":checked")) {
     if (((e = $(".self").val()), e < 5001))
       return void alert(
@@ -31,14 +32,14 @@ function calculate() {
       $("#internet2").is(":checked") && (e += 15e4),
       $("#fun2").is(":checked") && (e += 15e5),
       $("#preventive2").is(":checked") && (e += 3921633);
-  const l = maincalculation(e, d, i, t, n, s);
+  const r = maincalculation(e, a, i, t, s, n);
   alert(
-    `Tiền cần có trong ngân hàng vào năm ${n} tuổi: ` +
-      new Intl.NumberFormat().format(l[1]) +
+    `Tiền cần có trong ngân hàng vào năm ${s} tuổi: ` +
+      new Intl.NumberFormat().format(r[1]) +
       " VNĐ \nTiền cần gửi vào ngân hàng mỗi năm (Lãi suất " +
-      100 * d +
+      100 * a +
       "%/năm): " +
-      new Intl.NumberFormat().format(l[0]) +
+      new Intl.NumberFormat().format(r[0]) +
       " VNĐ"
   );
 }
@@ -71,3 +72,23 @@ function hide() {
       $("#utilities1").prop("disabled", !1),
       $("#utilities2").prop("disabled", !1));
 }
+const radioButtons = $('input[type="radio"]');
+radioButtons &&
+  radioButtons.each(function () {
+    let e = $(this).attr("name");
+    $(this).on("click", function () {
+      let i = $(this).attr("is_checked");
+      if ("false" !== i && $(this).attr("is_checked"))
+        $(this).prop("checked", !1), $(this).attr("is_checked", "false");
+      else {
+        $(this).attr("is_checked", "true");
+        const i = Array.from(radioButtons),
+          t = i.filter(function (i) {
+            if (!i.checked) return $(i).attr("name") === e;
+          });
+        t.forEach(function (e) {
+          $(e).attr("is_checked") && $(e).attr("is_checked", "false");
+        });
+      }
+    });
+  });
