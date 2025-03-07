@@ -13,7 +13,7 @@ function calculate() {
     n = $("#age3").val(),
     s = $("#inflate").val() / 100,
     d = $("#interest").val() / 100;
-  if (!i || !t || !d) return void alert("Vui lòng nhập một số hợp lệ!");
+  if (!i || !t || !d || !s || !n) return void alert("Vui lòng nhập một số hợp lệ!");
   if ($("#self").is(":checked")) {
     if (((e = $(".self").val()), e < 5001))
       return void alert(
