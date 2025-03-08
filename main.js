@@ -3,8 +3,8 @@ function maincalculation(e, i, t, s, n, a) {
     d = n - s,
     l = (1 + a) / (1 + i),
     c =
-      Math.ceil(12 * e * Math.pow(1 + a, d)) * ((1 - Math.pow(l, r)) / (1 - l));
-  return [Math.ceil(c / ((1 - Math.pow(1 + i, d)) / -i)), c];
+      (12 * e * Math.pow(1 + a, d)) * ((1 - Math.pow(l, r)) / (1 - l));
+  return [Math.ceil(c / ((1 - Math.pow(1 + i, d)) / -i)), Math.ceil(c)];
 }
 function calculate() {
   var e = 4e6;
