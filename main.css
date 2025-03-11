@@ -1,5 +1,5 @@
-input::-webkit-outer-spin-button,
-input::-webkit-inner-spin-button {
+input::-webkit-inner-spin-button,
+input::-webkit-outer-spin-button {
   -webkit-appearance: none;
   margin: 0;
 }
@@ -46,8 +46,8 @@ input[type="number"] {
   width: calc(100% - 20px);
 }
 .self,
-input[type="text"],
-input[type="number"] {
+input[type="number"],
+input[type="text"] {
   height: 35px;
   margin-bottom: 20px;
   padding: 10px;
@@ -104,8 +104,8 @@ button[type="submit"]:hover {
     height: 45px;
   }
 }
-input[type="radio"],
-input[type="checkbox"] {
+input[type="checkbox"],
+input[type="radio"] {
   height: 18px;
   width: 18px;
 }
@@ -113,15 +113,14 @@ input[type="number"] {
   border: 2px solid #dadada;
   border-radius: 7px;
 }
-input:invalid { 
+input:invalid {
   border: none;
   outline: 2px solid red;
   border-radius: 7px;
 }
-input[type="number"]
-  :valid,
-  :focus { 
-  outline: none;
+:focus,
+input[type="number"] :valid {
+  outline: 0;
   border-color: #9ecaed;
   box-shadow: 0 0 10px #9ecaed;
-} 
+}
