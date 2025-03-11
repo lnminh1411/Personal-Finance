@@ -18,7 +18,7 @@
 </head>
 
 <body>
-    <form onkeydown="if(event.keyCode === 13) {return false;}" id="form" onsubmit="calculate()">
+    <form onkeydown="if(event.keyCode === 13) {return false;}" id="form" onsubmit="calculate(); event.preventDefault()">
         <lable>Bắt đầu tiết kiệm từ năm (tuổi): </lable><input id="age" type="number" placeholder="25" min="15" max="35"
             step="1" onkeydown="this.value=this.value.replace(/[^\d]/,'')"
             onkeyup="this.value=this.value.replace(/[^\d]/,'')"><br>

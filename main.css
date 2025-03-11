@@ -3,11 +3,9 @@ input::-webkit-inner-spin-button {
   -webkit-appearance: none;
   margin: 0;
 }
-
 input[type="number"] {
   -moz-appearance: textfield;
 }
-
 * {
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
@@ -111,3 +109,19 @@ input[type="checkbox"] {
   height: 18px;
   width: 18px;
 }
+input[type="number"] {
+  border: 2px solid #dadada;
+  border-radius: 7px;
+}
+input:invalid { 
+  border: none;
+  outline: 2px solid red;
+  border-radius: 7px;
+}
+input[type="number"]
+  :valid,
+  :focus { 
+  outline: none;
+  border-color: #9ecaed;
+  box-shadow: 0 0 10px #9ecaed;
+} 
