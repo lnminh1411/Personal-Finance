@@ -3,8 +3,7 @@ function maincalculation(e, i, t, s, n, a, k) {
     d = n - s, //nam lam viec
     l = (1 + a), //lp
     z = (1 + i), //l
-    c = (e*12*Math.pow(l, (n - k)) * ((Math.pow(z, r) - Math.pow(l, r))/(z - l)))/Math.pow(z, r);
-    console.log(n - k)
+    c = (e*12*Math.pow(l, (n - k)) * ((Math.pow(z, r) - Math.pow(l, r))/(z - l)))/Math.pow(z, r); 
   return [Math.ceil(c / ((1 - Math.pow(z, (d + 1)))/(1 - z))), Math.ceil(c)];
 }
 function calculate() {
