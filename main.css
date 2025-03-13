@@ -3,9 +3,11 @@ input::-webkit-outer-spin-button {
   -webkit-appearance: none;
   margin: 0;
 }
+
 input[type="number"] {
   -moz-appearance: textfield;
 }
+
 * {
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
@@ -13,11 +15,13 @@ input[type="number"] {
   margin: 0;
   padding: 0;
 }
+
 body {
   font-family: Arial, sans-serif;
   background-color: #f7f7f7;
   color: #333;
 }
+
 form {
   max-width: 600px;
   margin: 40px auto;
@@ -31,20 +35,24 @@ form {
   -moz-box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
+
 label {
   display: block;
   margin-bottom: 10px;
   color: #666;
 }
+
 #other {
   width: 70%;
 }
+
 .self,
 input[type="number"] {
   width: -webkit-calc(100% - 20px);
   width: -moz-calc(100% - 20px);
   width: calc(100% - 20px);
 }
+
 .self,
 input[type="number"],
 input[type="text"] {
@@ -58,20 +66,24 @@ input[type="text"] {
   background-color: #f9f9f9;
   color: #333;
 }
+
 input[type="checkbox"] {
   margin-right: 10px;
 }
+
 fieldset {
   border: none;
   padding: 0;
   margin: 0;
   background-color: #fff;
 }
+
 legend {
   font-weight: 700;
   margin-bottom: 10px;
   color: #666;
 }
+
 button[type="submit"] {
   width: 100%;
   height: 40px;
@@ -88,36 +100,44 @@ button[type="submit"] {
   -moz-transition: background-color 0.3s ease;
   transition: background-color 0.3s ease;
 }
+
 button[type="submit"]:hover {
   background-color: #3e8e41;
 }
+
 @media (max-width: 768px) {
   form {
     margin: 20px 10px;
     padding: 15px;
   }
+
   button[type="submit"] {
     height: 50px;
   }
+
   .self,
   input[type="number"] {
     height: 45px;
   }
 }
+
 input[type="checkbox"],
 input[type="radio"] {
   height: 18px;
   width: 18px;
 }
+
 input[type="number"] {
   border: 2px solid #dadada;
   border-radius: 7px;
 }
+
 input:invalid {
   border: none;
   outline: 2px solid red;
   border-radius: 7px;
 }
+
 :focus,
 input[type="number"] :valid {
   outline: 0;

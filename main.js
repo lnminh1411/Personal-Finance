@@ -1,16 +1,18 @@
-function maincalculation(e, i, t, s, n, a) {
-  let r = t - n,
-    d = n - s,
-    l = (1 + a) / (1 + i),
-    c =
- (12 * e * Math.pow(1 + a, d)) * ((1 - Math.pow(l, r)) / (1 - l));
-  return [Math.ceil(c / ((1 - Math.pow(1 + i, d)) / -i)), Math.ceil(c)];
+function maincalculation(e, i, t, s, n, a, k) {
+  let r = t - n, //nam song con lai
+    d = n - s, //nam lam viec
+    l = (1 + a), //lp
+    z = (1 + i), //l
+    c = (e*12*Math.pow(l, (n - k)) * ((Math.pow(z, r) - Math.pow(l, r))/(z - l)))/Math.pow(z, r);
+    console.log(n - k)
+  return [Math.ceil(c / ((1 - Math.pow(z, (d + 1)))/(1 - z))), Math.ceil(c)];
 }
 function calculate() {
   var e = 4e6;
   const i = $("#age2").val(),
     t = $("#age").val(),
     s = $("#age3").val(),
+    k = $("#age4").val(),
     n = $("#inflate").val() / 100,
     a = $("#interest").val() / 100;
   if (!(i && t && a && n && s))
@@ -32,7 +34,7 @@ function calculate() {
       $("#internet2").is(":checked") && (e += 15e4),
       $("#fun2").is(":checked") && (e += 15e5),
       $("#preventive2").is(":checked") && (e += 3921633);
-  const r = maincalculation(e, a, i, t, s, n);
+  const r = maincalculation(e, a, i, t, s, n, k);
   alert(
     `Tiền cần có trong ngân hàng vào năm ${s} tuổi: ` +
       new Intl.NumberFormat().format(r[1]) +
@@ -92,3 +94,4 @@ x &&
       }
     });
   });
+hide()
