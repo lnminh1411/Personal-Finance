@@ -156,7 +156,7 @@ input[type="number"] :valid {
 }
 
 #result span {
-  background-color: cyan;
+  background-color: rgba(234, 239, 44, 0.7);
   color:black;
   padding: 3px;
   border-radius: 5px;
