@@ -1,20 +1,25 @@
-function maincalculation(e, i, t, s, n, a, k) {
-  let r = t - n, //nam song con lai
-    d = n - s, //nam lam viec
-    l = (1 + a), //lp
-    z = (1 + i), //l
-    c = (e*12*Math.pow(l, (n - k)) * ((Math.pow(z, r) - Math.pow(l, r))/(z - l)))/Math.pow(z, r); 
-  return [Math.ceil(c / ((1 - Math.pow(z, (d + 1)))/(1 - z))), Math.ceil(c)];
+function maincalculation(e, i, t, s, n, a, r) {
+  let d = t - n,
+    l = n - s,
+    c = 1 + a,
+    p = 1 + i,
+    o =
+      (12 *
+        e *
+        Math.pow(c, n - r) *
+        ((Math.pow(p, d) - Math.pow(c, d)) / (p - c))) /
+      Math.pow(p, d);
+  return [Math.ceil(o / ((1 - Math.pow(p, l + 1)) / (1 - p))), Math.ceil(o)];
 }
 function calculate() {
   var e = 4e6;
   const i = $("#age2").val(),
     t = $("#age").val(),
     s = $("#age3").val(),
-    k = $("#age4").val(),
-    n = $("#inflate").val() / 100,
-    a = $("#interest").val() / 100;
-  if (!(i && t && a && n && s))
+    n = $("#age4").val(),
+    a = $("#inflate").val() / 100,
+    r = $("#interest").val() / 100;
+  if (!(i && t && r && a && s))
     return void alert("Vui lòng nhập một số hợp lệ!");
   if ($("#self").is(":checked")) {
     if (((e = $(".self").val()), e < 5001))
@@ -33,16 +38,11 @@ function calculate() {
       $("#internet2").is(":checked") && (e += 15e4),
       $("#fun2").is(":checked") && (e += 15e5),
       $("#preventive2").is(":checked") && (e += 3921633);
-  const r = maincalculation(e, a, i, t, s, n, k);
-  alert(
-    `Tiền cần có trong ngân hàng vào năm ${s} tuổi: ` +
-      new Intl.NumberFormat().format(r[1]) +
-      " VNĐ \nTiền cần gửi vào ngân hàng mỗi năm (Lãi suất " +
-      100 * a +
-      "%/năm): " +
-      new Intl.NumberFormat().format(r[0]) +
-      " VNĐ"
-  );
+  const d = maincalculation(e, r, i, t, s, a, n);
+  $("#result").css({ display: "block" })
+  window.location.href='#result'
+  $("#mneed").html(`Tiền cần có trong ngân hàng vào năm ${s} tuổi:<br><span>${new Intl.NumberFormat().format(d[1])} VNĐ</span>`)
+  $("#mneedpermon").html(`Tiền cần gửi vào ngân hàng mỗi năm (Lãi suất ${100*r}%/năm):<br><span>${new Intl.NumberFormat().format(d[0])} VNĐ</span>`)
 }
 function hide() {
   $("#self").is(":checked")
@@ -92,5 +92,5 @@ x &&
         });
       }
     });
-  });
-hide()
+  }),
+  hide();
