@@ -1,78 +1,238 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width,initial-scale=1">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.9.2/umd/popper.min.js"
-        integrity="sha512-2rNj2KJ+D8s1ceNasTIex6z4HWyOnEYLVC3FigGOmyQCZc2eBXKgOxQmo3oKLHyfcj53uz4QMsRCWNbLd32Q1g=="
-        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.9.2/umd/popper.min.js"
+      integrity="sha512-2rNj2KJ+D8s1ceNasTIex6z4HWyOnEYLVC3FigGOmyQCZc2eBXKgOxQmo3oKLHyfcj53uz4QMsRCWNbLd32Q1g=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
     <title>Personal Finance Calculator</title>
-    <meta name="description" content="">
-    <link rel="stylesheet" href="main.css">
+    <meta name="description" content="" />
+    <link rel="stylesheet" href="main.css" />
     <script src="https://polyfill-fastly.io/v3/polyfill.min.js"></script>
-    <script src="https://code.jquery.com/jquery-3.7.1.min.js"
-        integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
-</head>
+    <script
+      src="https://code.jquery.com/jquery-3.7.1.min.js"
+      integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo="
+      crossorigin="anonymous"
+    ></script>
+  </head>
 
-<body>
-    <form onkeydown="if(event.keyCode === 13) {return false;}" id="form" onsubmit="calculate(); event.preventDefault()">
-        <lable>Hiện tại bạn đang (tuổi):</lable><input id="age4" type="number" placeholder="16" min="1" max="60"
-            step="1" onkeydown="this.value=this.value.replace(/[^\d]/,'')"
-            onkeyup="this.value=this.value.replace(/[^\d]/,'')"><br>
-        <lable>Bắt đầu tiết kiệm từ năm (tuổi):</lable><input id="age" type="number" placeholder="25" min="15" max="35"
-            step="1" onkeydown="this.value=this.value.replace(/[^\d]/,'')"
-            onkeyup="this.value=this.value.replace(/[^\d]/,'')"><br>
-        <lable>Dự định sẽ nghỉ hưu vào năm (tuổi):</lable><input id="age3" type="number" placeholder="60" min="40"
-            max="70" step="1" onkeydown="this.value=this.value.replace(/[^\d]/,'')"
-            onkeyup="this.value=this.value.replace(/[^\d]/,'')"><br>
-        <lable>Dự định sẽ sống đến năm (tuổi):</lable><input id="age2" type="number" placeholder="90" min="61" max="130"
-            step="1" onkeydown="this.value=this.value.replace(/[^\d]/,'')"
-            onkeyup="this.value=this.value.replace(/[^\d]/,'')"><br>
-        <lable>Lãi suất hàng năm (%):</lable><input id="interest" type="number" placeholder="6" min="0.01" max="100"
-            step="0.01"><br>
-        <lable>Lạm phát hàng năm (%):</lable><input id="inflate" type="number" value="4" min="0.01" max="20"
-            step="0.01"><br><br>
+  <body>
+    <form
+      onkeydown="if(event.keyCode === 13) {return false;}"
+      id="form"
+      onsubmit="calculate(); event.preventDefault()"
+    >
+      <lable>Hiện tại bạn đang (tuổi):</lable
+      ><input
+        id="age4"
+        type="number"
+        placeholder="16"
+        min="1"
+        max="60"
+        step="1"
+        onkeydown="this.value=this.value.replace(/[^\d]/,'')"
+        onkeyup="this.value=this.value.replace(/[^\d]/,'')"
+      /><br />
+      <lable>Bắt đầu tiết kiệm từ năm (tuổi):</lable
+      ><input
+        id="age"
+        type="number"
+        placeholder="25"
+        min="15"
+        max="35"
+        step="1"
+        onkeydown="this.value=this.value.replace(/[^\d]/,'')"
+        onkeyup="this.value=this.value.replace(/[^\d]/,'')"
+      /><br />
+      <lable>Dự định sẽ nghỉ hưu vào năm (tuổi):</lable
+      ><input
+        id="age3"
+        type="number"
+        placeholder="60"
+        min="40"
+        max="70"
+        step="1"
+        onkeydown="this.value=this.value.replace(/[^\d]/,'')"
+        onkeyup="this.value=this.value.replace(/[^\d]/,'')"
+      /><br />
+      <lable>Dự định sẽ sống đến năm (tuổi):</lable
+      ><input
+        id="age2"
+        type="number"
+        placeholder="90"
+        min="61"
+        max="130"
+        step="1"
+        onkeydown="this.value=this.value.replace(/[^\d]/,'')"
+        onkeyup="this.value=this.value.replace(/[^\d]/,'')"
+      /><br />
+      <lable>Lãi suất hàng năm (%):</lable
+      ><input
+        id="interest"
+        type="number"
+        placeholder="6"
+        min="0.01"
+        max="100"
+        step="0.01"
+      /><br />
+      <lable>Lạm phát hàng năm (%):</lable
+      ><input
+        id="inflate"
+        type="number"
+        value="4"
+        min="0.01"
+        max="20"
+        step="0.01"
+      /><br /><br />
+      <fieldset>
+        <legend>Các khoản chi tiêu</legend>
+        <label
+          >Thực phẩm và nhu yếu phẩm
+          <input
+            type="checkbox"
+            id="essentials"
+            class="align"
+            name="items"
+            value="essentials"
+            checked
+            onclick="return false;"
+            required
+          /><span>(4,000,000 VNĐ)</span></label
+        ><label
+          >Giao thông / Đi lại
+          <input type="checkbox" id="traffic" class="align" name="traffic" value="traffic" />
+          <span>(207,081 VNĐ)</span></label
+        ><label
+          >Vật dụng gia đình
+          <input
+            type="checkbox"
+            id="families"
+            name="families"
+            value="families"
+            class="align"
+          />
+          <span>(200,000 VNĐ)</span></label
+        ><br />
         <fieldset>
-            <legend>Các khoản chi tiêu</legend><label>Thực phẩm và nhu yếu phẩm <input type="checkbox" id="essentials"
-                    name="items" value="essentials" checked onclick="return false;" required>(4,000,000
-                VNĐ)</label><label>Giao thông / Đi lại <input type="checkbox" id="traffic" name="traffic"
-                    value="traffic"> (207,081 VNĐ)</label><label>Vật dụng gia đình <input type="checkbox" id="families"
-                    name="families" value="families"> (200,000 VNĐ)</label><br>
-            <fieldset>
-                <legend>Tiện ích</legend><label>Điều kiện tối thiểu <input type="radio" id="utilities1" name="utilities"
-                        value="utilities"> (1,000,000 VNĐ)</label><label>Điều kiện tốt hơn <input type="radio"
-                        id="utilities2" name="utilities" value="utilities"> (1,500,000 VNĐ)</label>
-            </fieldset><br>
-            <fieldset>
-                <legend>Điện thoại và Internet</legend><label>Tối thiểu <input type="radio" id="internet1"
-                        name="internet" value="internet"> (135,000 VNĐ)</label><label>Điều kiện tốt hơn <input
-                        type="radio" id="internet2" name="internet" value="internet"> (150,000 VNĐ)</label>
-            </fieldset><br>
-            <fieldset>
-                <legend>Vui chơi giải trí</legend><label>Tối thiểu <input type="radio" id="fun1" name="fun" value="fun">
-                    (384,200 VNĐ)</label><label>Điều kiện tốt hơn <input type="radio" id="fun2" name="fun" value="fun">
-                    (1,500,000 VNĐ)</label>
-            </fieldset><br>
-            <fieldset>
-                <legend>Các khoản dự phòng</legend><label>Tối thiểu <input type="radio" id="preventive1"
-                        name="preventive" value="preventive"> (1,000,000 VNĐ)</label><label>Điều kiện tốt hơn <input
-                        type="radio" id="preventive2" name="preventive" value="preventive"> (3,921,633 VNĐ)</label>
-            </fieldset><br><label style="font-weight:700">Các khoản chi tiêu khác:<br><input type="text"
-                    inputmode="numeric" id="other" onkeydown="this.value=this.value.replace(/[^\d]/,'')"
-                    onkeyup="this.value=this.value.replace(/[^\d]/,'')"><br><br>Tự nhập các khoản chi tiêu trong tháng
-                <input type="checkbox" id="self" onclick="hide()">
-                <div id="hiddenst" style="display:none"><input type="text" class="self"
-                        onkeydown="this.value=this.value.replace(/[^\d]/,'')"
-                        onkeyup="this.value=this.value.replace(/[^\d]/,'')" inputmode="numeric"
-                        placeholder="6942000 VNĐ"></div>
-            </label>
-        </fieldset><br><button type="submit" id="submitbutton">Hoàn Thành</button>
+          <legend>Tiện ích</legend>
+          <label
+            >Điều kiện tối thiểu
+            <input
+              type="radio"
+              id="utilities1"
+              name="utilities"
+              value="utilities"
+              class="align"
+            />
+            <span>(1,000,000 VNĐ)</span></label
+          ><label
+            >Điều kiện tốt hơn
+            <input
+              type="radio"
+              id="utilities2"
+              class="align"
+              name="utilities"
+              value="utilities"
+            />
+            <span>(1,500,000 VNĐ)</span></label
+          >
+        </fieldset>
+        <br />
+        <fieldset>
+          <legend>Điện thoại và Internet</legend>
+          <label
+            >Điều kiện tối thiểu
+            <input
+              type="radio"
+              id="internet1"
+              class="align"
+              name="internet"
+              value="internet"
+            />
+            <span>(135,000 VNĐ)</span></label
+          ><label
+            >Điều kiện tốt hơn
+            <input
+              type="radio"
+              id="internet2"
+              class="align"
+              name="internet"
+              value="internet"
+            />
+            <span>(150,000 VNĐ)</span></label
+          >
+        </fieldset>
+        <br />
+        <fieldset>
+          <legend>Vui chơi giải trí</legend>
+          <label
+            >Điều kiện tối thiểu
+            <input type="radio" id="fun1" class="align" name="fun" value="fun" />
+            <span>(384,200 VNĐ)</span></label
+          ><label
+            >Điều kiện tốt hơn
+            <input type="radio" id="fun2" class="align" name="fun" value="fun" />
+            <span>(1,500,000 VNĐ)</span></label
+          >
+        </fieldset>
+        <br />
+        <fieldset>
+          <legend>Các khoản dự phòng</legend>
+          <label
+            >Điều kiện tối thiểu
+            <input
+              type="radio"
+              id="preventive1"
+              class="align"
+              name="preventive"
+              value="preventive"
+            />
+            <span>(1,000,000 VNĐ)</span></label
+          ><label
+            >Điều kiện tốt hơn
+            <input
+              type="radio"
+              id="preventive2"
+              class="align"
+              name="preventive"
+              value="preventive"
+            />
+            <span>(3,921,633 VNĐ)</span></label
+          >
+        </fieldset>
+        <br /><label style="font-weight: 700"
+          >Các khoản chi tiêu khác:<br /><input
+            type="text"
+            inputmode="numeric"
+            id="other"
+            onkeydown="this.value=this.value.replace(/[^\d]/,'')"
+            onkeyup="this.value=this.value.replace(/[^\d]/,'')" /></label
+        ><label style="font-weight: 700"
+          >Tự nhập các khoản chi tiêu trong tháng
+          <input type="checkbox" id="self" onclick="hide()" style="vertical-align: top;" />
+          <div id="hiddenst" style="display: none">
+            <input
+              type="text"
+              class="self"
+              onkeydown="this.value=this.value.replace(/[^\d]/,'')"
+              onkeyup="this.value=this.value.replace(/[^\d]/,'')"
+              inputmode="numeric"
+              placeholder="6942000 VNĐ"
+            />
+          </div>
+        </label>
+      </fieldset>
+      <br /><button type="submit" id="submitbutton">Hoàn Thành</button>
     </form>
-    <form id="result" style="display:none"><label style="font-weight:700" id="mneed"></label> <label
-            style="font-weight:700" id="mneedpermon"></label></form>
-</body>
-<script src="main.js"></script>
-
+    <form id="result" style="display: none">
+      <label style="font-weight: 700" id="mneed"></label>
+      <label style="font-weight: 700" id="mneedpermon"></label>
+    </form>
+  </body>
+  <script src="main.js"></script>
 </html>
