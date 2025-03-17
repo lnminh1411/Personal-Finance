@@ -12,7 +12,7 @@ function mainCalculation(e, t, n, a, s, o, i) {
   return [p, m];
 }
 function calculate() {
-  let e = 4e6;
+  var e;
   const t = parseFloat($("#age2").val()),
     n = parseFloat($("#age").val()),
     a = parseFloat($("#age3").val()),
@@ -28,16 +28,20 @@ function calculate() {
       );
   } else {
     const t = [
-      { selector: "#utilities1", amount: 1e6 },
-      { selector: "#traffic", amount: 207081 },
-      { selector: "#internet1", amount: 135e3 },
-      { selector: "#families", amount: 2e5 },
-      { selector: "#fun1", amount: 384200 },
+      { selector: "#essentials1", amount: 4e6 },
+      { selector: "#essentials2", amount: 6e6 },
+      { selector: "#utilities1", amount: 5e5 },
+      { selector: "#traffic1", amount: 5e5 },
+      { selector: "#traffic2", amount: 5e6 },
+      { selector: "#internet1", amount: 2e5 },
+      { selector: "#families1", amount: 3e5 },
+      { selector: "#families2", amount: 4e5 },
+      { selector: "#fun1", amount: 5e5 },
       { selector: "#preventive1", amount: 1e6 },
-      { selector: "#utilities2", amount: 15e5 },
-      { selector: "#internet2", amount: 15e4 },
-      { selector: "#fun2", amount: 15e5 },
-      { selector: "#preventive2", amount: 3921633 },
+      { selector: "#utilities2", amount: 8e5 },
+      { selector: "#internet2", amount: 3e5 },
+      { selector: "#fun2", amount: 45e5 },
+      { selector: "#preventive2", amount: 4e6 },
     ];
     t.forEach((t) => {
       $(t.selector).is(":checked") && (e += t.amount);
