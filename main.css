@@ -135,8 +135,9 @@ input[type="number"] :valid {
 #result br {
   line-height: 27px;
 }
+sourcecode,
 #result span {
-  background-color: rgba(234, 239, 44, 0.7);
+  background-color: rgba(0, 183, 255, 0.555);
   color: #000;
   padding: 3px;
   border-radius: 5px;
