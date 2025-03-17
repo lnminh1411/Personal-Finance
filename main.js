@@ -7,12 +7,12 @@ function mainCalculation(e, t, n, a, s, o, i) {
       (12 * e * Math.pow(c, s - i) * (Math.pow(u, l) - Math.pow(c, l))) /
       (u - c) /
       Math.pow(u, l),
-    p = Math.ceil(h / ((1 - Math.pow(u, r + 1)) / (1 - u))),
-    m = Math.ceil(h);
-  return [p, m];
+    m = Math.ceil(h / ((1 - Math.pow(u, r + 1)) / (1 - u))),
+    p = Math.ceil(h);
+  return [m, p];
 }
 function calculate() {
-  var e;
+  let e = 0;
   const t = parseFloat($("#age2").val()),
     n = parseFloat($("#age").val()),
     a = parseFloat($("#age3").val()),
