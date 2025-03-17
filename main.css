@@ -141,7 +141,7 @@ input[type="number"] :valid {
   padding: 3px;
   border-radius: 5px;
 }
-form span {
+#form span {
   float: right;
   font-weight: 700;
 }

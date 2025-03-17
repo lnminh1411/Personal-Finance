@@ -9,7 +9,6 @@ function mainCalculation(e, t, n, a, s, o, i) {
       Math.pow(u, l),
     p = Math.ceil(h / ((1 - Math.pow(u, r + 1)) / (1 - u))),
     m = Math.ceil(h);
-  k = Math.ceil(j);
   return [p, m];
 }
 function calculate() {
@@ -49,16 +48,15 @@ function calculate() {
   const [l, r] = mainCalculation(e, i, t, n, a, o, s);
   $("#result").css({ display: "block" }),
     (window.location.href = "#result"),
-    console.log(z);
-  $("#mneed").html(
-    `Tiền cần có trong ngân hàng vào năm ${a} tuổi:<br><span>${new Intl.NumberFormat(
-      "vi-VN"
-    ).format(r)} VNĐ (Lấy cả gốc lẫn lãi)</span>`
-  ),
+    $("#mneed").html(
+      `Tiền cần có trong ngân hàng vào năm ${a} tuổi:<br><span>${new Intl.NumberFormat().format(
+        r
+      )} VNĐ</span>`
+    ),
     $("#mneedpermon").html(
       `Tiền cần gửi vào ngân hàng mỗi năm (Lãi suất ${
         100 * i
-      }%/năm):<br><span>${new Intl.NumberFormat("vi-VN").format(l)} VNĐ</span>`
+      }%/năm):<br><span>${new Intl.NumberFormat().format(l)} VNĐ</span>`
     );
 }
 function toggleInputs(e) {
