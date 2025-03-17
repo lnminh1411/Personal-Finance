@@ -28,9 +28,9 @@ function calculate() {
       );
   } else {
     const t = [
-      { selector: "#essentials1", amount: 4e6 },
-      { selector: "#essentials2", amount: 6e6 },
-      { selector: "#utilities1", amount: 5e5 },
+      { selector: "#essentials1", amount: 5e6 },
+      { selector: "#essentials2", amount: 75e5 },
+      { selector: "#utilities1", amount: 7e5 },
       { selector: "#traffic1", amount: 5e5 },
       { selector: "#traffic2", amount: 5e6 },
       { selector: "#internet1", amount: 2e5 },
