@@ -3,13 +3,13 @@ function mainCalculation(e, t, n, a, s, o, i) {
     r = s - a,
     c = 1 + o,
     u = 1 + t,
-    h =
+    m =
       (12 * e * Math.pow(c, s - i) * (Math.pow(u, l) - Math.pow(c, l))) /
       (u - c) /
       Math.pow(u, l),
-    m = Math.ceil(h / ((1 - Math.pow(u, r + 1)) / (1 - u))),
-    p = Math.ceil(h);
-  return [m, p];
+    h = Math.ceil((m * (1 - u)) / ((1 - Math.pow(u, r)) * u)),
+    p = Math.ceil(m);
+  return [h, p, Math.ceil(h / 12)];
 }
 function calculate() {
   let e = 0;
@@ -49,7 +49,7 @@ function calculate() {
     const n = parseFloat($("#other").val());
     isNaN(n) || (e += n);
   }
-  const [l, r] = mainCalculation(e, i, t, n, a, o, s);
+  const [l, r, c] = mainCalculation(e, i, t, n, a, o, s);
   $("#result").css({ display: "block" }),
     (window.location.href = "#result"),
     $("#mneed").html(
@@ -57,10 +57,15 @@ function calculate() {
         r
       )} VNĐ</span>`
     ),
-    $("#mneedpermon").html(
+    $("#mneedperyr").html(
       `Tiền cần gửi vào ngân hàng mỗi năm (Lãi suất ${
         100 * i
       }%/năm):<br><span>${new Intl.NumberFormat().format(l)} VNĐ</span>`
+    ),
+    $("#mneedpermon").html(
+      `Tiền cần tiết kiệm mỗi tháng: <br><span>${new Intl.NumberFormat().format(
+        c
+      )} VNĐ</span>`
     );
 }
 function toggleInputs(e) {
