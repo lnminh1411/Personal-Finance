@@ -19,8 +19,12 @@ function calculate() {
     s = parseFloat($("#age4").val()),
     o = parseFloat($("#inflate").val()) / 100,
     i = parseFloat($("#interest").val()) / 100;
-  if (!(t && n && i && o && a && s))
-    return void alert("Vui lòng nhập một số hợp lệ!");
+    if (!(a && b && c && d && e && ff))
+      return void alert("Vui lòng nhập một số hợp lệ!");
+    if (n > a)
+      return void alert(
+        "Không cần tiết kiệm thêm nữa"
+      );
   if ($("#self").is(":checked")) {
     if (((e = parseFloat($(".self").val())), e < 5001))
       return void alert(
@@ -104,3 +108,10 @@ x.length &&
     });
   }),
   hide();
+
+function setminmax() {
+  const n = parseFloat($("#age3").val());
+  isNaN(n) || $("#age").attr("max", (n - 1)); $("#age4").attr("max", (n - 1)); $("#age2").attr("min", (n + 1));
+  const a = parseFloat($("#age4").val());
+  isNaN(a) || $("#age3").attr("min", (a + 1))
+}

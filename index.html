@@ -39,7 +39,7 @@
         max="60"
         step="1"
         onkeydown="this.value=this.value.replace(/[^\d]/,'')"
-        onkeyup="this.value=this.value.replace(/[^\d]/,'')"
+        onkeyup="this.value=this.value.replace(/[^\d]/,''); setminmax()"
       /><br />
       <lable>Bắt đầu tiết kiệm từ năm (tuổi):</lable
       ><input
@@ -50,7 +50,7 @@
         max="35"
         step="1"
         onkeydown="this.value=this.value.replace(/[^\d]/,'')"
-        onkeyup="this.value=this.value.replace(/[^\d]/,'')"
+        onkeyup="this.value=this.value.replace(/[^\d]/,''); setminmax()"
       /><br />
       <lable>Dự định sẽ nghỉ hưu vào năm (tuổi):</lable
       ><input
@@ -61,7 +61,7 @@
         max="70"
         step="1"
         onkeydown="this.value=this.value.replace(/[^\d]/,'')"
-        onkeyup="this.value=this.value.replace(/[^\d]/,'')"
+        onkeyup="this.value=this.value.replace(/[^\d]/,''); setminmax()"
       /><br />
       <lable>Dự định sẽ sống đến năm (tuổi):</lable
       ><input
@@ -69,10 +69,10 @@
         type="number"
         placeholder="90"
         min="61"
-        max="130"
+        max="200"
         step="1"
         onkeydown="this.value=this.value.replace(/[^\d]/,'')"
-        onkeyup="this.value=this.value.replace(/[^\d]/,'')"
+        onkeyup="this.value=this.value.replace(/[^\d]/,''); setminmax()"
       /><br />
       <lable>Lãi suất hàng năm (%):</lable
       ><input
