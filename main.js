@@ -75,11 +75,14 @@ function calculate() {
 function toggleInputs(e) {
   const t = [
     "#other",
-    "#essentials",
-    "#traffic",
+    "#essentials1",
+    "#essentials2",
+    "#traffic1",
+    "#traffic2",
     "#internet1",
     "#internet2",
-    "#families",
+    "#families1",
+    "#families2",
     "#fun1",
     "#fun2",
     "#preventive1",
